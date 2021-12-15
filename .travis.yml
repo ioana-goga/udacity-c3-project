@@ -12,10 +12,12 @@ before_install:
   - curl -L https://github.com/docker/compose/releases/download/${DOCKER_COMPOSE_VERSION}/docker-compose-`uname -s`-`uname -m` > docker-compose
   - chmod +x docker-compose
   - sudo mv docker-compose /usr/local/bin
+  - curl -LO https://storage.googleapis.com/kubernetes-release/release/$(curl -s R_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin # set Docker username and password in Travis console
+  - echo 'dockerhub credentials configured'
 # Pre-testing installs
 install:
-  - docker-compose -f docker-compose-build.yaml build 
-  - docker-compose up
+  - docker-compose -f docker-compose-build.yaml build  --parallel 
+  - docker-compose push
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
   - docker push "$DOCKER_USERNAME"/udagram-user:v1
