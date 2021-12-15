@@ -14,5 +14,5 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 # Pre-testing installs
 install:
-  - docker-compose -f docker-compose-build.yaml build
+  - docker-compose build -f docker-compose-build.yaml
 after_success:
