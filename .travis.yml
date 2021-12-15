@@ -15,5 +15,4 @@ before_install:
 # Pre-testing installs
 install:
   - docker-compose -f docker-compose-build.yaml build
-  - docker-compose push
 after_success:
