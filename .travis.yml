@@ -13,7 +13,6 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 # Pre-testing installs
 install:
-  - docker-compose --version
   - docker-compose build -f docker-compose-build.yaml
 
 after_success:
