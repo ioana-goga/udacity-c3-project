@@ -4,7 +4,7 @@ node_js:
 services:
   - docker
 env:
-  - DOCKER_COMPOSE_VERSION=1.27
+  - DOCKER_COMPOSE_VERSION=1.29.2
 before_install:
   # Docker Compose Install 
   - sudo rm /usr/local/bin/docker-compose
