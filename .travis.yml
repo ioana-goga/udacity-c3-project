@@ -13,7 +13,7 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 # Pre-testing installs
 install:
-  - docker-compose build -f docker-compose-build.yaml
+  - docker-compose build
 
 after_success:
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
