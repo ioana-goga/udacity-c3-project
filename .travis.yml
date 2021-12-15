@@ -14,11 +14,6 @@ before_install:
   - sudo mv docker-compose /usr/local/bin
 # Pre-testing installs
 install:
-  - docker-compose -f docker-compose-build.yaml build  --parallel 
+  - docker-compose -f docker-compose-build.yaml build
   - docker-compose push
 after_success:
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_USERNAME" --password-stdin
-  - docker push "$DOCKER_USERNAME"/udagram-user:v1
-  - docker push "$DOCKER_USERNAME"/udagram-feed:v1
-  - docker push "$DOCKER_USERNAME"/udagram-frontend:v1
-  - docker push "$DOCKER_USERNAME"/reverseproxy:v1
