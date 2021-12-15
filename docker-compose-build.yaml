@@ -3,16 +3,16 @@ services:
   reverseproxy:
     build:
       context: ./udagram-reverseproxy
-    image: ioanagoga/reverseproxy
+    image: ioanagoga/reverseproxy:v1
   backend_user:
     build:
       context: ./udagram-api-user
-    image: ioanagoga/udagram-api-user
+    image: ioanagoga/udagram-api-user:v1
   backend_feed:
     build:
       context: ./udagram-api-feed
-    image: ioanagoga/udagram-api-feed
+    image: ioanagoga/udagram-api-feed:v1
   frontend:
     build:
       context: ./udagram-frontend
-    image: ioanagoga/udagram-frontend:local
+    image: ioanagoga/udagram-frontend:local:v1
