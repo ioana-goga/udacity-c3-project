@@ -18,7 +18,7 @@ before_script:
   - echo "no tests"
 
 script:
-  - export SERVICE_VERSION=v.1
+  - export SERVICE_VERSION=v.3
   - docker-compose -f docker-compose-build.yaml build
   - docker images
 
