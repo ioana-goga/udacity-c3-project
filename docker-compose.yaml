@@ -1,13 +1,13 @@
 version: "3"
 services:
   reverseproxy:
-      image: ioanagoga/reverseproxy
-      ports:
-          - 8080:8080
-      restart: always
-      depends_on:
-        - backend-user
-        - backend-feed
+    image: ioanagoga/reverseproxy
+    ports:
+        - 8080:8080
+    restart: always
+    depends_on:
+      - backend-user
+      - backend-feed
   backend-user:
     image: ioanagoga/udagram-api-user
     environment:
