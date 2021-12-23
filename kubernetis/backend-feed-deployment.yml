@@ -1,0 +1,53 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: udagram-api-feed
+  labels:
+    app: udagram-api-feed
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: udagram-api-feed
+  template:
+    metadata:
+      labels:
+        app: udagram-api-feed
+    spec:
+      containers:
+      - name: udagram-api-feed
+        image: ioanagoga/udagram-api-feed:v.3      
+        ports:
+        - containerPort: 8080
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "2048Mi"
+            cpu: "500m"    
+        envFrom:
+        - configMapRef:
+            name: env-config
+        volumeMounts:
+         - name: aws-secret
+           mountPath: "/root/.aws/"
+           readOnly: true 
+      volumes:
+        - name: aws-secret
+          secret:
+           secretName: aws-secret
+      restartPolicy: Always     
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: udagram-api-feed
+  labels:
+    app: udagram-api-feed
+spec:
+  ports:
+  - port: 8080
+    protocol: TCP
+  selector:
+    app: udagram-api-feed
